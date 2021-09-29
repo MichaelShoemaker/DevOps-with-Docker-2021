@@ -1,0 +1,10 @@
+gary@HP-Printer6509:~$ docker run -d devopsdockeruh/simple-web-service:ubuntu
+1e3ad2bc6d1001969651acaf7cc2f79c382a9b5464e4596d228e08ff96a08c92
+gary@HP-Printer6509:~$ docker ps
+CONTAINER ID   IMAGE                                      COMMAND                 CREATED         STATUS         PORTS     NAMES
+1e3ad2bc6d10   devopsdockeruh/simple-web-service:ubuntu   "/usr/src/app/server"   4 seconds ago   Up 2 seconds             mystifying_jennings
+gary@HP-Printer6509:~$ docker exec -it mystifying_jennings bash
+root@1e3ad2bc6d10:/usr/src/app# tail -f ./text.log
+2021-09-29 20:42:49 +0000 UTC
+2021-09-29 20:42:51 +0000 UTC
+Secret message is: 'You can find the source code here: https://github.com/docker-hy'
