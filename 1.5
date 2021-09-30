@@ -1,0 +1,16 @@
+devopsdockeruh/simple-web-service   ubuntu    4e3362e907d5   6 months ago   83MB
+devopsdockeruh/simple-web-service   alpine    fd312adc88e0   6 months ago   15.7MB
+
+
+gary@HP-Printer6509:~$ docker run -d devopsdockeruh/simple-web-service:alpine 
+cf45f48dbdc0649068eb2fd3aecfb8eebb3bd3b9f9cd8cab4b6b3ecfddabc424
+gary@HP-Printer6509:~$ docker ps
+CONTAINER ID   IMAGE                                      COMMAND                 CREATED         STATUS         PORTS     NAMES
+cf45f48dbdc0   devopsdockeruh/simple-web-service:alpine   "/usr/src/app/server"   5 seconds ago   Up 2 seconds             jovial_leakey
+gary@HP-Printer6509:~$ docker exec -it jovial_leakey sh
+/usr/src/app # tail -f ./text.log
+2021-09-30 14:22:23 +0000 UTC
+2021-09-30 14:22:25 +0000 UTC
+2021-09-30 14:22:27 +0000 UTC
+2021-09-30 14:22:29 +0000 UTC
+Secret message is: 'You can find the source code here: https://github.com/docker-hy'
