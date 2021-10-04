@@ -1,0 +1,21 @@
+###Dockerfile##
+FROM openjdk:8
+
+EXPOSE 8080
+
+WORKDIR /usr/src/myapp
+
+COPY . .
+
+RUN ./mvnw package
+
+CMD java -jar ./target/docker-example-1.1.3.jar
+
+
+
+###Build Image###
+docker build . -t spring
+
+
+###Run Container###
+docker run -p 8080:8080 spring
