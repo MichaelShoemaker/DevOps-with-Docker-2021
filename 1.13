@@ -1,0 +1,18 @@
+###Dockerfile###
+FROM golang:1.16
+
+WORKDIR /usr/src/app
+
+COPY . .
+
+RUN go build
+
+CMD ./server
+
+
+
+###Docker Build Command###
+docker build . -t example-backend
+
+###Run Container Command###
+docker run -p 8080:8080 example-backend
