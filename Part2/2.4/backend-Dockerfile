@@ -1,13 +1,22 @@
-FROM golang:1.16
+version: '3.8'
 
-WORKDIR /usr/src/app
+services:
+  frontend:
+    image: frontend
+    ports:
+      - 5000:5000
+    container_name: frontendcontainer
 
-COPY . .
+  backend:
+    image: backend
+    ports:
+      - 8080:8080
+    environment:
+      - REDIS_HOST=rediscontainer
+    container_name: backendcontainer
 
-ENV REDIS_HOST=rediscontainer
-
-ENV REQUEST_ORIGIN=http://localhost:5000
-
-RUN go build
-
-CMD ./server
+  redis:
+    image: redis
+    ports:
+      - 6379:6379
+    container_name: rediscontainer
