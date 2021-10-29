@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  frontend:
+    image: frontend
+    ports:
+      - 5000:5000
+    container_name: frontendcontainer
+  
+  backend:
+    image: backend_redis
+    ports:
+      - 8080:8080
+    environment:
+      - POSTGRES_HOST=postgres
+      - POSTGRES_USER=postgres 
+      - POSTGRES_PASSWORD=postgres 
+      - POSTGRES_DATABASE=postgres 
+    container_name: backendcontainer
+    depends_on:
+      - db
+
+  redis:
+    image: redis
+    ports:
+      - 6379:6379
+    container_name: rediscontainer
+
+  db:
+    image: postgres:13.2-alpine
+    restart: unless-stopped
+    environment:
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - ./database:/var/lib/postgresql/data
+    container_name: postgres
