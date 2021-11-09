@@ -2,4 +2,4 @@ I tried doing a multistage build, but kept running into trouble using apk to ins
 
 Additionally permissions became very.
 
-Ultimately I settled on using the python3.7-slim image
+Ultimately I settled on using the python:3.7-slim image
